@@ -1,0 +1,3 @@
+# source "${0:h}/os/arch.zsh"
+# source "${0:h}/os/debian.zsh"
+# source "${0:h}/os/mac.zsh"
