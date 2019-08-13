@@ -4,6 +4,29 @@ alias docker-all-containers-delete='docker rm $(docker ps -a -q)'
 alias docker-all-images-delete-dangling='docker rmi $(docker images --quiet --filter "dangling=true")'
 alias psd='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
 
+
+function phpini_enable_extension() {
+  sed -i "/extension\s*=\s*$1/ s/^;*//" /etc/php/php.ini
+}
+
+function phpini_uncomment_line() {
+  sed -i "/$1\s*=/ s/^;*//" /etc/php/php.ini
+}
+
+function uncomment_all() {
+  sed -i 's/\;//' $1
+}
+
+function phpini_change_val() {
+  sed -i "s,$1\s*=.*$,$1=$2," /etc/php/php.ini
+  # sed -e "/$1.*=.*/ s/=.*/=$2/" /etc/php/php.ini
+  # sed 's,$1.*=.*$,$1=$2' /etc/php/php.ini
+}
+
+function uncomment_change_val() {
+  uncomment $1 && change_val $1 $2
+}
+
 ######################
 # Server executables #
 ######################
