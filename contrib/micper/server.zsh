@@ -28,6 +28,6 @@ alias psd='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Stat
 # alias phpz='docker_run localhost_phpzts'
 
 
-function server() {
-    ( cd ~/Workspace/vagrant-dev && vagrant $* )
+function v () {
+    ( cd ~/Workspace && vagrant $* )
 }
