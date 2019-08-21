@@ -4,8 +4,8 @@ confirm() {
 }
 
 mkscript() {
-  touch $1
-  chmod u+x $1
+  touch "$@"
+  chmod u+x "$@"
 }
 
 # set all dirs to inherit group for the created dirs/files
