@@ -5,7 +5,7 @@ alias killit='killall -s 9'
 alias highlight='highlight -O ansi --syntax'
 
 function del() {
-   mv $1 ~/.Trash
+   gio trash
 }
 
 function copy-prezto-os-zsh() {

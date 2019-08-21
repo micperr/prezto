@@ -8,11 +8,6 @@ mkscript() {
   chmod u+x $1
 }
 
-# check if library installed
-islibinstalled() {
-  ldconfig -p | grep $1
-}
-
 # set all dirs to inherit group for the created dirs/files
 # $1 directory
 # $2 group
