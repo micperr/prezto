@@ -4,26 +4,38 @@ alias docker-all-containers-delete='docker rm $(docker ps -a -q)'
 alias docker-all-images-delete-dangling='docker rmi $(docker images --quiet --filter "dangling=true")'
 alias psd='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
 
+function findText () {
+  grep -rnw '.' -e $1
+}
 
-function phpini_enable_extension() {
+function v () {
+    ( cd ~/Hacienda && vagrant $* )
+}
+
+function vProvisionSites () {
+    ( cd ~/Hacienda && vagrant provision --provision-with sites )
+}
+
+
+function phpiniEnableExtension() {
   sed -i "/extension\s*=\s*$1/ s/^;*//" /etc/php/php.ini
 }
 
-function phpini_uncomment_line() {
+function phpiniUncommentLine() {
   sudo sed -i "/$1\s*=/ s/^;*//" /etc/php/php.ini
 }
 
-function uncomment_all() {
+function uncommentAll() {
   sed -i 's/\;//' $1
 }
 
-function phpini_change_val() {
+function phpiniChangeVal() {
   sudo sed -i "s,$1\s*=.*$,$1=$2," /etc/php/php.ini
   # sed -e "/$1.*=.*/ s/=.*/=$2/" /etc/php/php.ini
   # sed 's,$1.*=.*$,$1=$2' /etc/php/php.ini
 }
 
-function uncomment_change_val() {
+function uncommentChangeVal() {
   phpini_uncomment_line $1 && phpini_change_val $1 $2
 }
 
@@ -49,8 +61,3 @@ function uncomment_change_val() {
 # done
 
 # alias phpz='docker_run localhost_phpzts'
-
-
-function v () {
-    ( cd ~/Workspace && vagrant $* )
-}
