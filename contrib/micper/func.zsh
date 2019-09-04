@@ -3,6 +3,18 @@ confirm() {
     [[ $REPLY =~ ^[Yy]$ ]]
 }
 
+function findText () {
+  sudo  grep -rnw '.' -e $1
+}
+
+function findDir () {
+  sudo find . -name $1 -type d
+}
+
+function findFile () {
+  sudo find . -name $1 -type f
+}
+
 mkscript() {
   touch "$@"
   chmod u+x "$@"
@@ -11,7 +23,7 @@ mkscript() {
 # set all dirs to inherit group for the created dirs/files
 # $1 directory
 # $2 group
-inheritgroup() {
+inheritGroup() {
     find $1 -type d -exec chgrp $2 {} +
     find $1 -type d -exec chmod g+s {} +
 }

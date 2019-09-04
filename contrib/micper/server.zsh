@@ -4,10 +4,6 @@ alias docker-all-containers-delete='docker rm $(docker ps -a -q)'
 alias docker-all-images-delete-dangling='docker rmi $(docker images --quiet --filter "dangling=true")'
 alias psd='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
 
-function findText () {
-  grep -rnw '.' -e $1
-}
-
 function v () {
     ( cd ~/Hacienda && vagrant $* )
 }
