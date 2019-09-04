@@ -1,4 +1,3 @@
-alias sudo='sudo '
 alias @='cd ~/Workspace'
 alias @@='cd ~/.zprezto/contrib/micper'
 alias reload='source ~/.zshrc'
