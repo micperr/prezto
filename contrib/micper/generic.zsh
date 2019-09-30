@@ -12,7 +12,7 @@ del() {
    sudo gio trash "$@"
 }
 
-v () {
+h () {
     ( cd ~/Hacienda && vagrant $* )
 }
 
