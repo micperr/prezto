@@ -41,7 +41,7 @@ function ,script_ubuntu_fresh_init {
 }
 
 
-
+return
 #################################
 ##    Manual handling needed    #
 #################################
