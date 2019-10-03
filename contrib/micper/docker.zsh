@@ -1,8 +1,17 @@
-alias docker-harbour='~/Workspace/dev-server/.venv/bin/python3 ~/Workspace/dev-server/server.py'
-alias docker-all-containers-stop-running='docker kill $(docker ps -q)'
-alias docker-all-containers-delete='docker rm $(docker ps -a -q)'
-alias docker-all-images-delete-dangling='docker rmi $(docker images --quiet --filter "dangling=true")'
-alias docker-ps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
+alias ,docker-harbour='~/Workspace/dev-server/.venv/bin/python3 ~/Workspace/dev-server/server.py'
+alias ,docker-all-containers-stop-running='docker kill $(docker ps -q)'
+alias ,docker-all-containers-delete='docker rm $(docker ps -a -q)'
+alias ,docker-all-images-delete-dangling='docker rmi $(docker images --quiet --filter "dangling=true")'
+alias ,docker_ps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
+alias ,docker-all-containers-clean=',docker-all-containers-stop-running && ,docker-all-containers-delete'
+
+,docker-cmd () {
+  docker run --rm $1 $2
+}
+
+,docker-run-container-daemon () {
+  docker run -itd --name $1 $2
+}
 
 ######################
 # Server executables #

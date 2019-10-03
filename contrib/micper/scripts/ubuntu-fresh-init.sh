@@ -31,6 +31,7 @@ function ,script_ubuntu_fresh_init {
   # dconf settings
   dconf write /org/gnome/desktop/wm/preferences/mouse-button-modifier '"<Alt>"'
   dconf write /org/gnome/evolution/mail/composer-no-signature-delim true
+  dconf write /org/gnome/settings-daemon/plugins/color/night-light-temperature 5000
 
   sudo apt autoremove --yes
 

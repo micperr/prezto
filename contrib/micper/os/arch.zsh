@@ -5,5 +5,3 @@
 alias pacman='sudo pacman'
 alias pacu='sudo pacman -Syu --noconfirm'
 alias pacuy='sudo pacman -Syyu --noconfirm'
-alias sctl='sudo systemctl'
-alias sctlu='systemctl --user'

@@ -1,8 +1,8 @@
 __dir__=${0:h}
 osfile="$__dir__/os.zsh"
+
 if [ ! -f "$osfile" ]; then
     cp ~/.zprezto/contrib/micper/os.zsh.dist ~/.zprezto/contrib/micper/os.zsh
-    # echo "\033[1;33m\"$osfile\"\033[0;36m does not exist. Create it and select the OS you are using inside it to import appropriate logic.\033[0m"
 
     # Uncomment proper distribution source
     distribution=`awk -F= '/^NAME/{print $2}' /etc/os-release`
