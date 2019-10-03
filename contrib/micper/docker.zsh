@@ -6,7 +6,7 @@ alias ,docker_ps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t
 alias ,docker-all-containers-clean=',docker-all-containers-stop-running && ,docker-all-containers-delete'
 
 ,docker-cmd () {
-  docker run --rm $1 $2
+  docker run --rm $1 $@
 }
 
 ,docker-run-container-daemon () {
