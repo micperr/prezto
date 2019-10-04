@@ -25,3 +25,7 @@ source "$__dir__/git.zsh"
 for f in $__dir__/scripts/*; do
   source $f
 done
+
+unset f
+unset __dir__
+unset osfile
