@@ -1,22 +1,20 @@
 alias @='cd ~/Workspace'
 alias @@='cd ~/.zprezto/contrib/micper'
 alias reload='source ~/.zshrc'
-alias h='cd ~/Hacienda && vagrant ssh'
-alias sctl='sudo systemctl'
-alias sctlu='systemctl --user'
+alias ,sctl='sudo systemctl'
+alias ,sctlu='systemctl --user'
 alias ,killit='killall -s 9'
 alias ,highlight='highlight -O ansi --syntax'
 alias ,ip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 alias ,mountremote='sshfs $1 $2'
 alias ,lsports='sudo lsof -i -P -n | grep LISTEN'
 
+,gnome-reload () {
+  gnome-shell --replace & disown
+}
 
 ,change-prezto-theme () {
   sed --follow-symlinks -i "s/theme 'sorin'/theme 'steeef'/g" $HOME/.zpreztorc
-}
-
-v () {
-  ( cd ~/Hacienda && vagrant $* )
 }
 
 ,del() {
