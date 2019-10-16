@@ -1,7 +1,7 @@
 ############
 # Hacienda #
 ############
-,v () {
+v () {
   ( cd ~/Hacienda && vagrant $* )
 }
 
@@ -27,6 +27,10 @@ alias ,docker-all-images-delete-dangling='docker rmi $(docker images --quiet --f
 alias ,docker-ps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
 alias ,docker-all-containers-clean=',docker-all-containers-stop-running && ,docker-all-containers-delete'
 
+#########
+# Rails #
+#########
+alias be='bundle exec'
 
 ###########
 # Symfony #
