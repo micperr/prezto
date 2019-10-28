@@ -20,12 +20,14 @@ alias ,devilnet-db-tunnel='ssh -f devilnet -L 8543:pgsql20.mydevil.net:5432 -N'
 ##########
 # Docker #
 ##########
-alias ,docker-harbour='~/Workspace/dev-server/.venv/bin/python3 ~/Workspace/dev-server/server.py'
+alias ,dev-server='~/Workspace/dev-server/.venv/bin/python3 ~/Workspace/dev-server/server.py'
+alias ,docker-ps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
 alias ,docker-all-containers-stop-running='docker kill $(docker ps -q)'
 alias ,docker-all-containers-delete='docker rm $(docker ps -a -q)'
 alias ,docker-all-images-delete-dangling='docker rmi $(docker images --quiet --filter "dangling=true")'
-alias ,docker-ps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
 alias ,docker-all-containers-clean=',docker-all-containers-stop-running && ,docker-all-containers-delete'
+alias ,docker-vanish=',docker-all-containers-stop-running && ,docker-all-containers-delete && ,docker-all-images-delete-dangling && docker volume prune'
+
 
 #########
 # Rails #
