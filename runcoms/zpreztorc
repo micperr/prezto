@@ -38,7 +38,9 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'autosuggestions' \
   'prompt' \
+  'git' \
   'docker' \
+  'rails' \
   'micper'
 
 #
