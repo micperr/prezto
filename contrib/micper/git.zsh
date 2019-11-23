@@ -11,3 +11,4 @@ alias gPullMaster='git pull origin master'
 alias gFileUndoAdd='git reset HEAD'
 
 alias gUpdateSubmodules='git submodule update --recursive --remote'
+alias gUntrackRemote='git branch --unset-upstream'
