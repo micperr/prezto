@@ -27,7 +27,7 @@ alias ,docker-all-containers-delete='docker rm $(docker ps -a -q)'
 alias ,docker-all-images-delete-dangling='docker rmi $(docker images --quiet --filter "dangling=true")'
 alias ,docker-all-containers-clean=',docker-all-containers-stop-running && ,docker-all-containers-delete'
 alias ,docker-vanish=',docker-all-containers-stop-running && ,docker-all-containers-delete && ,docker-all-images-delete-dangling && docker volume prune'
-
+alias ,docker-ips='docker ps -q | xargs -n 1 docker inspect --format "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{ .Name }}" | sed "s/ \// /"'
 
 #########
 # Rails #
