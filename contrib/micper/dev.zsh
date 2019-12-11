@@ -28,7 +28,7 @@ alias ,docker-all-images-delete-dangling='docker rmi $(docker images --quiet --f
 alias ,docker-all-containers-clean=',docker-all-containers-stop-running && ,docker-all-containers-delete'
 alias ,docker-vanish=',docker-all-containers-stop-running && ,docker-all-containers-delete && ,docker-all-images-delete-dangling && docker volume prune'
 alias ,docker-ips='docker ps -q | xargs -n 1 docker inspect --format "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{ .Name }}" | sed "s/ \// /"'
-
+alias ,docker-compose-rebuild-container='docker-compose up -d --no-deps --build'
 #########
 # Rails #
 #########
