@@ -3,3 +3,4 @@
 modules/*/cache.zsh
 .idea/
 contrib/micper/os.zsh
+contrib/micper/custom/
