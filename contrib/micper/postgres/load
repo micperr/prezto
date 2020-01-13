@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+apis=( fbi i18n iam log notification payment storage survey webapi )
+user=$FB_LOCAL_DB_USER
+password=$FB_LOCAL_DB_PASS
+port='5432'
+path=$1
+
+if [[ -z $path ]]; then
+    echo "Path to load from must be passed."
+    exit 1
+fi
+
+if [[ ! -d $path ]]; then
+    echo "${path} path does not exist"
+    exit 1
+fi
+
+for api in "${apis[@]}"
+do
+    printf "===================   Loading ${api} database   ===================\n\n"
+    PGPASSWORD=${password} pg_restore --clean --if-exists --no-acl --no-owner --verbose -d api_${api} -h localhost -U $user -p $port ${path}/api_${api}.dump
+    printf "\n\n"
+done
+
+echo -e "\033[0;32mDone.\033[0m"

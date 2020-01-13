@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Databases
+apis=( fbi i18n iam log notification payment storage survey webapi )
+
+# SSH tunnels
+qa=$FB_QA_SSH_TUNNEL
+
+env=$1
+dst=$2
+
+case $env in
+    qa|uat)
+        user=$FB_QA_DB_USER
+        password=$FB_QA_DB_PASS
+        port=5433
+        ${!env} & # Open SSH tunnel (access variable named equally to $env var)
+        ssh_tunnel_pid=$!
+        echo "Connecting to ${env^^} database..."
+        sleep 3
+    ;;
+    local)
+        user=$FB_LOCAL_DB_USER
+        password=$FB_LOCAL_DB_PASS
+        port=5432
+    ;;
+    *)
+        echo 'Environment must be one of "local", "qa" or "uat"'
+        exit 1
+    ;;
+esac
+
+if [[ -z ${dst} ]]; then
+    dump_dir="./${env}"
+else
+    dump_dir=${dst}
+fi
+
+if [[ ! -d $dump_dir ]]; then
+    mkdir -p $dump_dir
+fi
+
+for api in "${apis[@]}"
+do
+    echo "===================   Dumping api_${api} database   ==================="
+    PGPASSWORD=${password} pg_dump -h localhost -p $port -U $user -Fc api_$api > ${dump_dir}/api_$api.dump
+done
+
+if [[ -n "$ssh_tunnel_pid" ]]; then
+    kill $ssh_tunnel_pid
+fi
+
+echo -e "\033[0;32mDone.\033[0m"
