@@ -6,13 +6,15 @@ password=$FB_LOCAL_DB_PASS
 port='5432'
 path=$1
 
+function error { echo -e "\033[0;31m${1}\033[0m"; }
+
 if [[ -z $path ]]; then
-    echo "Path to load from must be passed."
+    error "Path to load from must be passed"
     exit 1
 fi
 
 if [[ ! -d $path ]]; then
-    echo "${path} path does not exist"
+    error "\"${path}\" path does not exist"
     exit 1
 fi
 
