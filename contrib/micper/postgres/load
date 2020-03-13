@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 apis=( fbi i18n iam log notification payment storage survey webapi )
+# apis=( survey  )
 user=$FB_LOCAL_DB_USER
 password=$FB_LOCAL_DB_PASS
 port='5432'
@@ -24,5 +25,7 @@ do
     PGPASSWORD=${password} pg_restore --clean --if-exists --no-acl --no-owner --verbose -d api_${api} -h localhost -U $user -p $port ${path}/api_${api}.dump
     printf "\n\n"
 done
+
+echo ${path} > .path_loaded
 
 echo -e "\033[0;32mDone.\033[0m"

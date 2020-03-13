@@ -2,6 +2,7 @@
 
 # Databases
 apis=( fbi i18n iam log notification payment storage survey webapi )
+# apis=( survey )
 
 env=$1
 dump_dir=$2
@@ -37,11 +38,14 @@ case $env in
     uat)
         setup $FB_UAT_DB_USER $FB_UAT_DB_PASS '5433' "$FB_UAT_SSH_TUNNEL"
     ;;
+    prod)
+        setup $FB_PROD_DB_USER $FB_PROD_DB_PASS '5432' "$FB_PROD_SSH_TUNNEL"
+    ;;
     local)
         setup $FB_LOCAL_DB_USER $FB_LOCAL_DB_PASS '5432'
     ;;
     *)
-        error 'Environment must be one of "local", "qa" or "uat"'
+        error 'Environment must be one of "local", "qa", "uat" or "prod"'
         exit 1
     ;;
 esac

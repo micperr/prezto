@@ -16,12 +16,13 @@ fi
 
 source ${osfile}
 # ---------------------------
-source "$__dir__/aws.zsh"
-source "$__dir__/dev.zsh"
 source "$__dir__/generic.zsh"
-source "$__dir__/git.zsh"
 
 for f in $__dir__/scripts/*; do
+  source $f
+done
+
+for f in $__dir__/dev/*; do
   source $f
 done
 
