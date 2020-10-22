@@ -26,6 +26,10 @@ for f in $__dir__/dev/*; do
   source $f
 done
 
+for f in $__dir__/secret/*; do
+  source $f
+done
+
 unset f
 unset __dir__
 unset osfile

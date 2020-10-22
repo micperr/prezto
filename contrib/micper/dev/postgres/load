@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-apis=( fbi i18n iam log notification payment storage survey webapi )
-# apis=( survey  )
+apis=( fbi i18n iam notification payment storage survey webapi )
+# apis=( log )
+
 user=$FB_LOCAL_DB_USER
 password=$FB_LOCAL_DB_PASS
 port='5432'
