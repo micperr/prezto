@@ -1,13 +1,9 @@
-function xhgui_run {
-    docker run --name xhgui -v /tmp/xhprof:/tmp/xhprof -p 8888:80 -p 27017:27017 xhgui
-}
-
-function xhgui_start {
-    docker start xhgui
+function xhgui_up {
+    docker-compose -f /home/micper/Workspace/foodback/xhgui/docker-compose.override.yml up -d
 }
 
 function xhgui_stop {
-    docker stop xhgui
+    docker-compose -f /home/micper/Workspace/foodback/xhgui/docker-compose.override.yml stop
 }
 
 function xhgui_import {
@@ -19,9 +15,9 @@ function xhgui_import {
 }
 
 function xhgui_wipe {
-    docker exec -it xhgui mongo xhprof --eval "db.results.remove({});"
+    docker exec -it xhgui_mongo mongo xhprof --eval "db.results.remove({});"
 }
 
 function xhgui_create_indexes {
-    docker exec -it xhgui mongo xhprof mongo.init.d/xhgui.js
+    docker exec -it xhgui_mongo mongo xhprof mongo.init.d/xhgui.js
 }
